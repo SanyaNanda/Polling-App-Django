@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, HttpRequest
 from django.urls import reverse
 from django.views import generic
 from .models import Question, Choice
@@ -31,15 +31,23 @@ class QuesView(generic.CreateView):
 	form_class = QuesForm
 	template_name = 'polls/createques.html'
 
-class ChoiceView(generic.CreateView):
-	model = Choice
-	form_class = ChoiceForm
+class ChoiceView(generic.TemplateView):
 	template_name = 'polls/options.html'
 
 
 class ResultsView(generic.DetailView):
 	model = Question
 	template_name = 'polls/results.html'
+
+
+def choice(request, pk):
+	question = get_object_or_404(Question, pk=pk)
+	if request.POST:
+		question.choice_set.create(choice_text=request.POST['op1'], votes=0)
+		question.choice_set.create(choice_text=request.POST.get('op2'), votes=0)
+		question.choice_set.create(choice_text=request.POST['op3'], votes=0)
+		question.choice_set.create(choice_text=request.POST['op4'], votes=0)
+		return HttpResponseRedirect(reverse('polls:index'))
 
 def vote(request, question_id):
 	question = get_object_or_404(Question, pk=question_id)

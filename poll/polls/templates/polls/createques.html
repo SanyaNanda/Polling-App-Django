@@ -1,9 +1,19 @@
+{% extends 'polls/base.html' %}
+{% block title %}
+create question
+{% endblock %}
+{% block content %}
+<div class="container">
 <div class="form-group">
 <form method="POST" enctype="multipart/form-data">
 	{% csrf_token %}
 	{{ form.as_p }}
-	<button class="btn btn-secondary">
-		ask
+<!-- <label for="numb">Number of choices</label><br>
+  <input type="integer" id="numb" name="numb"><br> -->
+	<button class="btn btn-primary">
+		Choices
 	</button>
 </form>
 </div>
+</div>
+{% endblock %}

@@ -1,9 +1,29 @@
+{% extends 'polls/base.html' %}
+{% block title %}
+options
+{% endblock %}
+{% block content %}
 <div class="form-group">
-<form method="POST" enctype="multipart/form-data">
+<form action="{% url 'polls:choice' pk %}" method="post">
 	{% csrf_token %}
-	{{ form.as_p }}
-	<button class="btn btn-secondary">
-		<a href="{% url 'polls:index' %}">Ask</a>
+	<!-- {{ form.as_p }} -->
+	<label for="op1">option 1</label><br>
+  	<input type="text" id="op1" name="op1"><br>
+
+
+  	<label for="op2">option 2</label><br>
+  	<input type="text" id="op2" name="op2"><br>
+
+  	<label for="op3">option 3</label><br>
+  	<input type="text" id="op3" name="op3"><br>
+
+  	<label for="op4">option 4</label><br>
+  	<input type="text" id="op4" name="op4"><br>
+
+  	<br><br>
+	<button class="btn btn-primary">
+		Poll
 	</button>
 </form>
 </div>
+{% endblock %}

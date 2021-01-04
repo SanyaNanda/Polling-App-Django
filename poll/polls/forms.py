@@ -7,10 +7,10 @@ class QuesForm(forms.ModelForm):
 		model = Question
 		fields = ('question_text',)
 		
-		# widgets = {
-		# 	'title':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter the title of the blog here'}),
-		# 	'author':forms.TextInput(attrs={'class':'form-control','value':'', 'id':'sanya', 'type':'hidden'}),
-		# }
+		widgets = {
+			'question_text':forms.TextInput(attrs={'class':'form-control','placeholder':'What is the Question?'}),
+			#'author':forms.TextInput(attrs={'class':'form-control','value':'', 'id':'sanya', 'type':'hidden'}),
+		}
 
 class ChoiceForm(forms.ModelForm):
 	class Meta:

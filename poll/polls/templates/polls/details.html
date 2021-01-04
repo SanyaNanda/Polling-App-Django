@@ -1,3 +1,8 @@
+{% extends 'polls/base.html' %}
+{% block title %}
+question
+{% endblock %}
+{% block content %}
 <h1>{{ question.question_text }}</h1>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -9,6 +14,7 @@
 	<label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
 	{% endfor %}
 	<br><br>
-	<button type="submit" name="Vote">Vote</button>
+	<button type="submit" class="btn btn-primary" name="Vote">Vote</button>
 </form>
 </div>
+{% endblock %}
