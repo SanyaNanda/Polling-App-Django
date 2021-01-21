@@ -1,5 +1,5 @@
-<!doctype html>
 {% load static %}
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -23,8 +23,8 @@
         <a class="nav-link" href="{% url 'polls:ques' %}">Generate Question</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <form method="GET" action="{% url 'polls:search' %}" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query">
       <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>

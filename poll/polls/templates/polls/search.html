@@ -1,11 +1,16 @@
 {% extends 'polls/base.html' %}
 {% block title %}
-Index
+Search
 {% endblock %}
 {% block content %}
-{% if latest_question_list %}
+<h1>Search Results:</h1>
+	{% if search|length < 1 %}
+	<p>No search results</p>
+	<p>Your Search - <b>{{ query }}</b>- didn't match anything</p>
+	<p><b>Suggestions:</b> Try different keywords.</p>
+	{% endif %}
 <ul>
-	{% for question in latest_question_list %}
+	{% for question in search %}
 	<div class="card">
   	<div class="card-body">
     <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
@@ -15,9 +20,4 @@ Index
 	
 	{% endfor %}
 </ul>
-{% else %}
-<p>
-	No polls available.
-</p>
-{% endif %}
 {% endblock %}

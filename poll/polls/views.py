@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect, HttpResponse, HttpRequest
+from django.http import HttpResponseRedirect, HttpResponse, HttpRequest, JsonResponse
 from django.urls import reverse
 from django.views import generic
 from .models import Question, Choice
@@ -63,4 +63,22 @@ def vote(request, question_id):
 # def results(request, question_id):
 # 	question = get_object_or_404(Question, pk=question_id)
 # 	return render(request, 'polls/results.html', {'question': question})
+
+def search(request):
+	query=request.GET.get('query')
+	search1 = Question.objects.filter(question_text__icontains=query)
+	search2 = Question.objects.filter(pub_date__icontains=query)
+	search = search1.union(search2)
+	params = {'search': search, 'query':query}
+	return render(request, 'polls/search.html', params)
+
+
+def resultData(request, obj):
+	votedata=[]
+	question=Question.objects.get(id=obj)
+	votes=question.choice_set.all()
+	for i in votes:
+		votedata.append({i.choice_text:i.votes})
+	return JsonResponse(votedata, safe=False)
+
 

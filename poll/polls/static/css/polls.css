@@ -1,0 +1,36 @@
+/*body {
+  background: #F0E5E1 ;
+}*/
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/*label {
+    width: 100%;
+}*/
+
+.card-input-element {
+    display: none;
+}
+
+.card-input {
+    margin: 10px;
+    padding: 00px;
+    color: #1b7ced;
+}
+
+.card-input:hover {
+    cursor: pointer;
+}
+
+.card-input-element:checked + .card-input {
+     box-shadow: 0 0 3px 3px #82eefd;
+     background-color: #1b7ced;
+     color: white;
+ }
+
+ #bb {
+ 	border-radius: 10px 10px
+ }
