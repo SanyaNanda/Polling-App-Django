@@ -20,5 +20,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('polls/', include('polls.urls'))
+    path('polls/', include('polls.urls')),
+    path('', include('polls.urls'))
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -49,12 +49,12 @@ Result
 
 	function buildChart(){
 		var chartData={
-			"type":"bar",
-			"scale-x":{
-				"values":state.items
+			type:"bar",
+			scale-x:{
+				values:state.items
 			},
-			"series":[{
-				"values":state.values
+			series:[{
+				values:state.values
 			}]
 		}
 
@@ -63,7 +63,6 @@ Result
 			data: chartData,
 		});
 }
-
 </script>
 <a href="{% url 'polls:index' %}" class="btn btn-primary">Home</a>
 {% endblock %}

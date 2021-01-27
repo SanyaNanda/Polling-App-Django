@@ -23,14 +23,19 @@
 
 .card-input:hover {
     cursor: pointer;
+    box-shadow: 0 0 0 2px var(--color-dark-gray);
+    background-color: #82eefd;
+    opacity: 1;
+    
+}
+
+.card-body{
+  width: 500px;
+  height: 75px;
 }
 
 .card-input-element:checked + .card-input {
      box-shadow: 0 0 3px 3px #82eefd;
      background-color: #1b7ced;
      color: white;
- }
-
- #bb {
- 	border-radius: 10px 10px
  }

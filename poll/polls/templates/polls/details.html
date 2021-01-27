@@ -4,7 +4,7 @@ question
 {% endblock %}
 {% block content %}
 <h1>{{ question.question_text }}</h1>
- <p><small><i>Asked on: {{ question.pub_date }}</i></small></p>
+ <p><small><i>Asked on: {{ question.pub_date }} UTC</i></small></p>
  <hr>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -14,17 +14,17 @@ question
 	{% csrf_token %}
 
 	{% for choice in question.choice_set.all %}
+	<label for="choice{{ forloop.counter }}">
 	<input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" class="card-input-element" />
 	
-<!-- 	<div class="panel panel-default card-input">
- -->	<div class="card border-primary mb-3 text-center card-input">
- 	<!-- <div class="card-body text-primary"> -->
+<!-- <div class="panel panel-default card-input">
+ --> <div class="card border-primary mb-3 text-center card-input">
+ 	<!--  <div class="card-body text-primary">  -->
  	 <div class="card-body">
-	<label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+ 	 	{{ choice.choice_text }}
+	<!-- <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br> -->
 	</div>
-		</div>
-
-	
+		</div></label>
 	{% endfor %}
 	<br><br>
 	<button type="submit" class="btn btn-primary" name="Vote">Vote</button>
