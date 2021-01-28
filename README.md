@@ -25,3 +25,14 @@ After voting, a detailed result of the poll is shown
 Users can also search for questions by keywords in the search bar
 
 ![search](https://github.com/SanyaNanda/Polling-App-Django/blob/master/poll/images/search.png)
+
+<b>Features</b>
+1. Generate questions with four options
+2. Poll and view the result
+3. Search for questions by keywords
+
+<b>Upcoming Features</b>
+1. functionality to create as many options for a question as you want
+2. one person can vote only once
+3. graphical presentation of the result of a poll
+4. login and sign up
