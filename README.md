@@ -35,4 +35,3 @@ Users can also search for questions by keywords in the search bar
 <b>Upcoming Features</b>
 1. functionality to create as many options for a question as you want
 2. one person can vote only once
-4. login and sign up
