@@ -18,9 +18,9 @@ They can change their choices as well
 
 ![change](https://github.com/SanyaNanda/Polling-App-Django/blob/master/poll/images/changechoice.png)
 
-After voting, a detailed result of the poll is shown
+After voting, a detailed result of the poll is shown along with a graphical presentation of the data using <b>zingchart</b>
 
-![result](https://github.com/SanyaNanda/Polling-App-Django/blob/master/poll/images/result.png)
+![result](https://github.com/SanyaNanda/Polling-App-Django/blob/master/poll/images/graph.png)
 
 Users can also search for questions by keywords in the search bar
 
@@ -29,10 +29,10 @@ Users can also search for questions by keywords in the search bar
 <b>Features</b>
 1. Generate questions with four options
 2. Poll and view the result
-3. Search for questions by keywords
+3. Graphical presentation of the poll provided using zingchart
+4. Search for questions by keywords
 
 <b>Upcoming Features</b>
 1. functionality to create as many options for a question as you want
 2. one person can vote only once
-3. graphical presentation of the result of a poll
 4. login and sign up
