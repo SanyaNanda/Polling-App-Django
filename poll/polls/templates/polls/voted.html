@@ -1,0 +1,12 @@
+{% extends 'polls/base.html' %}
+{% block title %}
+Voted
+{% endblock %}
+{% block content %}
+
+<h1>{{ question.question_text }}</h1>
+<h3>You have already voted</h3>
+<br><br>
+<a href="{% url 'polls:index' %}" class="btn btn-primary">Home</a>
+<a href="{% url 'polls:results' question.id %}" class="btn btn-primary">Result</a>
+{% endblock %}

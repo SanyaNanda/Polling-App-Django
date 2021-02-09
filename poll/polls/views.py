@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, HttpRequest, JsonResponse
 from django.urls import reverse
 from django.views import generic
-from .models import Question, Choice
+from .models import Question, Choice, Voter
 from .forms import QuesForm, ChoiceForm
 
 # Create your views here.
@@ -39,6 +39,10 @@ class ResultsView(generic.DetailView):
 	model = Question
 	template_name = 'polls/results.html'
 
+class VotedView(generic.DetailView):
+	model = Question
+	template_name = 'polls/voted.html'
+
 
 def choice(request, pk):
 	question = get_object_or_404(Question, pk=pk)
@@ -51,6 +55,8 @@ def choice(request, pk):
 
 def vote(request, question_id):
 	question = get_object_or_404(Question, pk=question_id)
+	if Voter.objects.filter(question=question, user=request.user.id).exists():
+		return HttpResponseRedirect(reverse('polls:voted', args=(question_id,)))
 	try:
 		selected_choice = question.choice_set.get(pk=request.POST['choice'])
 	except(KeyError, Choice.DoesNotExist):
@@ -58,6 +64,8 @@ def vote(request, question_id):
 	else:
 		selected_choice.votes += 1
 		selected_choice.save()
+		v=Voter(user=request.user, question=question)
+		v.save()
 		return HttpResponseRedirect(reverse('polls:results', args=(question_id,)))
 
 # def results(request, question_id):

@@ -22,6 +22,7 @@ urlpatterns = [
 	path('<int:pk>/choice/', views.choice, name='choice'),
 	path('<int:pk>/', views.DetailView.as_view(), name='detail'),
 	path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
+	path('<int:pk>/voted/', views.VotedView.as_view(), name='voted'),
 	path('<int:question_id>/vote/', views.vote, name='vote'),
 	path('<str:obj>/resultdata/', views.resultData, name='resultdata'),
 ]
