@@ -22,6 +22,10 @@ After voting, a detailed result of the poll is shown along with a graphical pres
 
 ![result](https://github.com/SanyaNanda/Polling-App-Django/blob/master/poll/images/graph.png)
 
+If the user has already voted for a given poll, then they can't revote. One user, one question, one vote!
+
+![voted](https://github.com/SanyaNanda/Polling-App-Django/blob/master/poll/images/voted.png)
+
 Users can also search for questions by keywords in the search bar
 
 ![search](https://github.com/SanyaNanda/Polling-App-Django/blob/master/poll/images/search.png)
@@ -30,8 +34,9 @@ Users can also search for questions by keywords in the search bar
 1. Generate questions with four options
 2. Poll and view the result
 3. Graphical presentation of the poll provided using zingchart
+4. One person can vote only once for a given question
 4. Search for questions by keywords
 
 <b>Upcoming Features</b>
 1. functionality to create as many options for a question as you want
-2. one person can vote only once
+
