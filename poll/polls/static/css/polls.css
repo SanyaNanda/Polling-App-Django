@@ -29,7 +29,7 @@
     
 }
 
-.card-body{
+#cards{
   width: 500px;
   height: 75px;
 }
@@ -38,4 +38,8 @@
      box-shadow: 0 0 3px 3px #82eefd;
      background-color: #1b7ced;
      color: white;
+ }
+
+ .badge {
+  text-align: right;
  }

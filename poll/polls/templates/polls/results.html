@@ -13,8 +13,9 @@ Result
 	{% for choice in question.choice_set.all %}
 	<div class="card">
   	<div class="card-body">
+  	<h5><span class="badge badge-primary float-right">{{ choice.votes }} vote{{ choice.votes | pluralize }}</span></h5>
 	{{ choice.choice_text }}
-	<span class="badge badge-primary float-right">{{ choice.votes }} vote{{ choice.votes | pluralize }}</span>
+	
 </div>
 </div>
 
@@ -23,19 +24,20 @@ Result
 <div id="myChart"></div>
 
 <script>
-	var state={
+	var state ={	
 		'items':[],
 		'values':[],
 	}
 
 	var objId = "{{question.id}}"
-	var dataurl = '/polls/resultdata/${objId}/'
+	var dataURL = `/polls/${objId}/resultdata/`
 
 	$.ajax({
 		method:'GET',
-		url:dataurl,
+		url:dataURL,
 		success:function(response){
 			for (var i in response){
+
 				var key = Object.keys(response[i])[0]
 				var value = Object.values(response[i])[0]
 
@@ -44,25 +46,44 @@ Result
 			}
 
 			buildChart()
+
 		}
 	})
 
 	function buildChart(){
-		var chartData={
-			type:"bar",
-			scale-x:{
-				values:state.items
+			var chartData = {
+			"type":"bar",
+			plot: {
+				'background-color': "#1b7ced",
+			    animation: {
+			      effect: 'ANIMATION_EXPAND_BOTTOM',
+			      method: 'ANIMATION_STRONG_EASE_OUT',
+			      sequence: 'ANIMATION_BY_NODE',
+			      speed: 275,
+			    }
+ 			 },
+			"scale-x":{
+				"values":state.items,
+				label: { text: '{{ question.question_text }}' }
+				
 			},
-			series:[{
-				values:state.values
-			}]
+			"scale-y":{
+				label: { text: 'Votes' },
+			},
+			"series":[
+				{
+					"values":state.values,
+					
+				}
+			],
 		}
 
+
 		zingchart.render({
-			id: "myChart",
-			data: chartData,
+		  id: "myChart",
+		  data: chartData,
 		});
-}
+	}
 </script>
 <a href="{% url 'polls:index' %}" class="btn btn-primary">Home</a>
 {% endblock %}
